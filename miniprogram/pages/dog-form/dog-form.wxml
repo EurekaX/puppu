@@ -1,0 +1,64 @@
+<view class="form-page">
+  <view class="form-body">
+    <view class="form-group flex-center flex-col">
+      <view class="avatar-upload" bindtap="onChooseAvatar">
+        <image wx:if="{{form.avatar}}" src="{{form.avatar}}" mode="aspectFill" />
+        <view wx:else class="avatar-empty">
+          <image class="avatar-icon-img" src="/images/animal-icons/dog-avatar.png" mode="aspectFit" />
+          <text class="avatar-hint">点击上传</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 昵称</view>
+      <input class="form-input" placeholder="狗狗的名字，最多15字" maxlength="15"
+        value="{{form.name}}" bindinput="onInput" data-field="name" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 品种</view>
+      <picker mode="selector" range="{{breeds}}" bindchange="onBreedChange" value="{{breedIndex}}">
+        <view class="picker-value">
+          <text class="{{form.breed ? '' : 'placeholder'}}">{{form.breed || '选择品种'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 性别</view>
+      <view class="gender-options">
+        <view wx:for="{{genderOptions}}" wx:key="value" wx:for-item="g"
+          class="gender-chip {{form.gender === g.value ? 'active' : ''}}"
+          bindtap="onGenderChange" data-value="{{g.value}}">
+          {{g.label}}
+        </view>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 出生日期</view>
+      <picker mode="date" value="{{form.birthday}}" end="{{today}}" bindchange="onBirthdayChange">
+        <view class="picker-value">
+          <text class="{{form.birthday ? '' : 'placeholder'}}">{{form.birthday || '选择日期'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+      <view class="field-hint" wx:if="{{ageDisplay}}">当前年龄：{{ageDisplay}}</view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">体重 <text class="unit">(kg)</text></view>
+      <view class="input-with-suffix">
+        <input class="form-input" type="digit" placeholder="0.00" value="{{form.weight}}"
+          bindinput="onInput" data-field="weight" />
+        <text class="input-suffix">kg</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-footer">
+    <button class="btn btn-primary" bindtap="onSubmit">保存档案</button>
+  </view>
+</view>

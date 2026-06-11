@@ -1,0 +1,58 @@
+<view class="profile-page">
+  <view class="profile-header animate-fade-in">
+    <view class="profile-title">我的狗狗</view>
+    <view class="profile-count" wx:if="{{dogs.length > 0}}">{{dogs.length}} 只</view>
+  </view>
+
+  <view class="dog-list" wx:if="{{dogs.length > 0}}">
+    <view wx:for="{{dogs}}" wx:key="_id"
+      class="dog-card animate-fade-in-up {{'animate-delay-' + (index + 1)}} {{currentDogId === item._id ? 'is-active' : ''}}"
+      bindtap="onSelectDog" data-id="{{item._id}}">
+      <view class="dog-avatar">
+        <image wx:if="{{item.avatar}}" src="{{item.avatar}}" mode="aspectFill" />
+        <image wx:else class="avatar-icon-img" src="/images/animal-icons/dog-avatar.png" mode="aspectFit" />
+      </view>
+
+      <view class="dog-info">
+        <view class="dog-name">{{item.name}}</view>
+        <view class="dog-meta">{{item.breed}}<text class="dot"> · </text>{{item.age}}</view>
+      </view>
+
+      <view class="dog-actions">
+        <text class="current-tag" wx:if="{{currentDogId === item._id}}">当前</text>
+        <button class="btn-line btn-edit" catchtap="onEditDog" data-id="{{item._id}}">编辑</button>
+        <button class="btn-line btn-del" catchtap="onDeleteDog" data-id="{{item._id}}">删除</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-dog-area animate-fade-in-up animate-delay-3" bindtap="onAddDog">
+    <image class="add-icon-img" src="/images/animal-icons/plus-paw.png" mode="aspectFit" />
+    <text class="add-label">添加狗狗</text>
+  </view>
+
+  <view class="empty-state animate-scale-in" wx:if="{{dogs.length === 0}}">
+    <image class="empty-hero-icon" src="/images/animal-icons/dog-avatar.png" mode="aspectFit" />
+    <text class="empty-text">还没有添加狗狗哦</text>
+    <text class="empty-sub">开始开启健康守护吧</text>
+  </view>
+
+  <view class="section-title">设置</view>
+  <view class="card animate-fade-in-up animate-delay-4">
+    <view class="settings-row flex-between" bindtap="onGoSettings">
+      <view class="settings-row-main">
+        <image class="settings-icon-img" src="/images/animal-icons/settings-leaf.png" mode="aspectFit" />
+        <view class="settings-item-title">通知设置</view>
+      </view>
+      <text class="settings-arrow">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="settings-row flex-between" bindtap="onExportData">
+      <view class="settings-row-main">
+        <image class="settings-icon-img" src="/images/animal-icons/export-bag.png" mode="aspectFit" />
+        <view class="settings-item-title">导出数据</view>
+      </view>
+      <text class="settings-arrow">›</text>
+    </view>
+  </view>
+</view>

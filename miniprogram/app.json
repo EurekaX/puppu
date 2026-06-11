@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/records/records",
+    "pages/profile/profile",
+    "pages/dog-form/dog-form",
+    "pages/vaccine-form/vaccine-form",
+    "pages/deworm-form/deworm-form",
+    "pages/food-stock-form/food-stock-form",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F8F8F0",
+    "navigationBarTitleText": "宠安记",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F8F8F0"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#9F927D",
+    "selectedColor": "#86B56C",
+    "backgroundColor": "#F8F8F0",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/records/records",
+        "text": "",
+        "iconPath": "images/tab-records.png",
+        "selectedIconPath": "images/tab-records-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "",
+        "iconPath": "images/tab-profile.png",
+        "selectedIconPath": "images/tab-profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

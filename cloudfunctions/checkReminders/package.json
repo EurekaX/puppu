@@ -1,0 +1,9 @@
+{
+  "name": "checkReminders",
+  "version": "1.0.0",
+  "description": "Check upcoming reminders and send subscribe messages",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

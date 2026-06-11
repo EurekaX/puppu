@@ -1,0 +1,59 @@
+<view class="settings-page">
+  <!-- Notification -->
+  <view class="section-title">通知</view>
+  <view class="card">
+    <view class="settings-row flex-between">
+      <view>
+        <view class="settings-label">疫苗到期提醒</view>
+        <view class="settings-desc">到期前7天发送提醒</view>
+      </view>
+      <switch checked="{{vaccineNotify}}" bindchange="onVaccineNotifyChange" color="#5B8C5A" />
+    </view>
+    <view class="divider"></view>
+    <view class="settings-row flex-between">
+      <view>
+        <view class="settings-label">驱虫到期提醒</view>
+        <view class="settings-desc">到期前7天发送提醒</view>
+      </view>
+      <switch checked="{{dewormNotify}}" bindchange="onDewormNotifyChange" color="#5B8C5A" />
+    </view>
+  </view>
+
+    <!-- 订阅消息状态 -->
+  <view class="card mt-sm">
+    <view class="flex-between">
+      <view>
+        <view class="settings-label">消息订阅</view>
+        <view class="settings-desc" wx:if="{{hasSubscribed}}">已授权，到期前将推送微信通知</view>
+        <view class="settings-desc" wx:else>授权后可接收到期微信提醒</view>
+      </view>
+      <button class="btn btn-outline btn-sm" bindtap="onSubscribe">{{hasSubscribed ? '已授权' : '去授权'}}</button>
+    </view>
+  </view>
+
+  <!-- Data -->
+  <view class="section-title" style="margin-top:var(--space-xl)">数据</view>
+  <view class="card">
+    <view class="settings-row flex-between" bindtap="onExportData">
+      <view>
+        <view class="settings-label">导出数据</view>
+        <view class="settings-desc">复制全部记录为 JSON</view>
+      </view>
+      <text class="settings-arrow">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="settings-row flex-between" bindtap="onClearData">
+      <view>
+        <view class="settings-label" style="color:var(--danger)">清除所有数据</view>
+        <view class="settings-desc">永久删除所有记录</view>
+      </view>
+      <text class="settings-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- Version -->
+  <view class="version-info">
+    <text>宠安记</text>
+    <text class="text-muted">v1.0.0</text>
+  </view>
+</view>

@@ -1,0 +1,120 @@
+﻿const storage = require('../../utils/storage');
+const { DEWORM_TYPES } = require('../../utils/constants');
+
+Page({
+  data: {
+    activeTab: 'vaccine',
+    records: []
+  },
+
+  onShow() {
+    this.loadRecords();
+  },
+
+  loadRecords() {
+    const app = getApp();
+    const dogId = app.globalData.currentDogId;
+    const tab = this.data.activeTab;
+
+    let records = [];
+    if (tab === 'vaccine') {
+      records = storage.getVaccineRecords(dogId).map(r => {
+        const status = storage.getStatus(r.nextDueDate);
+        return {
+          ...r,
+          displayTitle: r.vaccineType,
+          displayDate: '閹恒儳顫? ' + storage.formatDate(r.dateTaken),
+          displaySub: r.hospital || '',
+          statusColor: status.status === 'safe' ? 'safe' : status.status === 'warning' ? 'warning' : 'danger',
+          statusLabel: status.label
+        };
+      });
+    } else if (tab === 'deworm') {
+      records = storage.getDewormRecords(dogId).map(r => {
+        const status = storage.getStatus(r.nextDueDate);
+        const typeLabel = DEWORM_TYPES.find(t => t.value === r.type);
+        return {
+          ...r,
+          displayTitle: r.brandName + ' (' + (typeLabel ? typeLabel.label : '') + ')',
+          displayDate: '閻劏宓? ' + storage.formatDate(r.dateTaken),
+          displaySub: '閸涖劍婀? ' + r.periodMonths + '娑擃亝婀€',
+          statusColor: status.status === 'safe' ? 'safe' : status.status === 'warning' ? 'warning' : 'danger',
+          statusLabel: status.label
+        };
+      });
+    } else {
+      records = storage.getFoodStockRecords(dogId).map(r => {
+        const remainingKg = Number(r.remainingKg || 0);
+        const statusColor = remainingKg <= 0 ? 'danger' : remainingKg <= 1 ? 'warning' : 'safe';
+        const statusLabel = remainingKg <= 0 ? '宸茬己绮? : remainingKg <= 1 ? '搴撳瓨鍋忎綆' : '搴撳瓨鍏呰冻';
+        return {
+          ...r,
+          displayTitle: r.brandName,
+          displayDate: '璐叆: ' + storage.formatDate(r.purchaseDate),
+          displaySub: '鎬婚噺 ' + r.totalKg + 'kg 路 鍓╀綑 ' + remainingKg + 'kg',
+          statusColor,
+          statusLabel
+        };
+      });
+    }
+
+    this.setData({ records });
+  },
+
+  onSwitchTab(e) {
+    const tab = e.currentTarget.dataset.tab;
+    this.setData({ activeTab: tab }, () => this.loadRecords());
+  },
+
+  onAddRecord() {
+    const tab = this.data.activeTab;
+    const app = getApp();
+    const dogId = app.globalData.currentDogId;
+
+    if (!dogId) {
+      wx.showToast({ title: '鐠囧嘲鍘涢崷?閹存垹娈?妞ゅ灚鍧婇崝鐘靛珝閻?, icon: 'none' });
+      return;
+    }
+
+    if (tab === 'vaccine') {
+      wx.navigateTo({ url: '/pages/vaccine-form/vaccine-form?dogId=' + dogId });
+    } else if (tab === 'deworm') {
+      wx.navigateTo({ url: '/pages/deworm-form/deworm-form?dogId=' + dogId });
+    } else {
+      wx.navigateTo({ url: '/pages/food-stock-form/food-stock-form?dogId=' + dogId });
+    }
+  },
+
+  onEditRecord(e) {
+    const id = e.currentTarget.dataset.id;
+    if (this.data.activeTab === 'vaccine') {
+      wx.navigateTo({ url: '/pages/vaccine-form/vaccine-form?id=' + id });
+    } else if (this.data.activeTab === 'deworm') {
+      wx.navigateTo({ url: '/pages/deworm-form/deworm-form?id=' + id });
+    } else {
+      wx.navigateTo({ url: '/pages/food-stock-form/food-stock-form?id=' + id });
+    }
+  },
+
+  onDeleteRecord(e) {
+    const id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '绾喛顓婚崚鐘绘珟',
+      content: '閸掔娀娅庨崥搴＄殺閺冪姵纭堕幁銏狀槻',
+      success: (res) => {
+        if (res.confirm) {
+          if (this.data.activeTab === 'vaccine') {
+            storage.deleteVaccineRecord(id);
+          } else if (this.data.activeTab === 'deworm') {
+            storage.deleteDewormRecord(id);
+          } else {
+            storage.deleteFoodStockRecord(id);
+          }
+          this.loadRecords();
+          wx.showToast({ title: '瀹告彃鍨归梽?, icon: 'success' });
+        }
+      }
+    });
+  }
+});
+

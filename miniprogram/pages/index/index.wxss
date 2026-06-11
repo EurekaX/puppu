@@ -1,0 +1,267 @@
+.dashboard {
+  min-height: 100vh;
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom) + 24rpx);
+}
+
+/* ── Dog Switcher ── */
+.dog-switcher {
+  margin-top: var(--space-md);
+}
+
+.dog-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dog-avatar-sm {
+  flex-shrink: 0;
+}
+
+.avatar-ring {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid var(--border);
+  box-shadow: 0 2rpx 0 #D8CDB7;
+}
+.avatar-ring image {
+  width: 100%;
+  height: 100%;
+}
+.avatar-icon-img {
+  width: 72rpx;
+  height: 72rpx;
+  display: block;
+}
+
+.dog-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.dog-name {
+  font-size: var(--font-lg);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.5rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dog-meta {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-top: 2rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dot {
+  color: var(--text-muted);
+}
+
+.switch-indicator {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 16rpx;
+  background: var(--primary-light);
+  border-radius: var(--radius-full);
+  border: 2rpx solid var(--primary);
+  flex-shrink: 0;
+}
+.switch-label {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+  margin-right: 4rpx;
+}
+.switch-arrow {
+  font-size: 18rpx;
+  color: var(--text-muted);
+}
+
+/* ── Hero Status ── */
+.hero-section {
+  padding: var(--space-lg) var(--page-padding) var(--space-sm);
+}
+.hero-label {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 4rpx;
+  margin-bottom: var(--space-md);
+}
+
+.status-cards {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.status-cards-grid {
+  flex-wrap: wrap;
+}
+
+.status-card {
+  flex: 1;
+  min-width: calc(50% - var(--space-sm));
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  border: 2rpx solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.status-dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  margin-right: var(--space-sm);
+  flex-shrink: 0;
+}
+.status-dot.safe    { background: var(--primary); }
+.status-dot.warning { background: var(--warning); }
+.status-dot.overdue { background: var(--danger); }
+.status-dot.none    { background: var(--text-muted); }
+
+.status-card.safe    { background: var(--primary-light); }
+.status-card.warning { background: var(--warning-light); }
+.status-card.overdue { background: var(--danger-light); }
+.status-card.none    { background: var(--card-bg); }
+
+.status-content {
+  flex: 1;
+}
+.status-type {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+  margin-bottom: 2rpx;
+}
+.status-value {
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.status-card.safe .status-value    { color: var(--primary-deep); }
+.status-card.warning .status-value { color: var(--warning); }
+.status-card.overdue .status-value { color: var(--danger); }
+
+.status-icon-img {
+  width: 70rpx;
+  height: 70rpx;
+  opacity: 0.92;
+  margin-left: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* ── Quick Actions ── */
+.quick-actions {
+  display: flex;
+  margin: var(--space-md) var(--page-padding);
+  gap: var(--space-sm);
+}
+
+.action-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 2rpx solid var(--border);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2rpx 0 #D8CDB7, 0 8rpx 18rpx rgba(61, 52, 40, 0.08);
+}
+.action-card:active {
+  transform: translateY(4rpx) scale(0.99);
+  transition: transform 0.15s ease;
+}
+
+.action-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rpx;
+}
+.vaccine-accent { background: #86B56C; }
+.deworm-accent  { background: var(--warning); }
+.food-accent    { background: #B98B56; }
+
+.action-icon-img {
+  width: 88rpx;
+  height: 88rpx;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.action-label {
+  font-size: var(--font-sm);
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 1rpx;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Reminders ── */
+.reminder-card {
+  cursor: pointer;
+  border: 2rpx solid var(--border);
+}
+
+.reminder-inner {
+  width: 100%;
+}
+
+.reminder-dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  margin-right: var(--space-sm);
+  margin-top: 8rpx;
+  flex-shrink: 0;
+}
+.reminder-dot.warning { background: var(--warning); }
+.reminder-dot.danger  { background: var(--danger); }
+
+.reminder-title {
+  font-size: var(--font-md);
+  font-weight: 450;
+  letter-spacing: 0.5rpx;
+}
+.reminder-date {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-top: 2rpx;
+}
+
+.done-icon-img {
+  width: 96rpx;
+  height: 96rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.empty-hero-icon {
+  width: 168rpx;
+  height: 168rpx;
+  display: block;
+  margin-bottom: var(--space-lg);
+}

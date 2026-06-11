@@ -1,0 +1,70 @@
+.records-page {
+  min-height: 100vh;
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom) + 24rpx);
+}
+
+.segment-bar-3 .segment-item {
+  font-size: 22rpx;
+}
+
+.records-list {
+  margin-top: var(--space-sm);
+}
+
+.record-card {
+  border: 2rpx solid var(--border);
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.record-card:active {
+  transform: translateY(3rpx);
+}
+
+.record-main {
+  width: 100%;
+}
+
+.record-title {
+  font-size: var(--font-md);
+  font-weight: 700;
+  margin-bottom: 6rpx;
+  letter-spacing: 0.5rpx;
+}
+
+.record-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.record-meta {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+}
+
+.record-delete {
+  width: 44rpx;
+  height: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--space-sm);
+  border-radius: 50%;
+  background: var(--card-bg-warm);
+  border: 2rpx solid var(--border-light);
+}
+
+.delete-icon {
+  font-size: 28rpx;
+  color: var(--text-muted);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.record-delete:active {
+  background: var(--danger-light);
+}
+
+.record-delete:active .delete-icon {
+  color: var(--danger);
+}

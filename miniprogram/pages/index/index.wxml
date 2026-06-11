@@ -1,0 +1,101 @@
+<view class="dashboard">
+  <view class="dog-switcher card animate-fade-in" wx:if="{{dogs.length > 0}}">
+    <picker mode="selector" range="{{dogNames}}" value="{{currentDogIndex}}" bindchange="onSwitchDog">
+      <view class="dog-row">
+        <view class="dog-avatar-sm">
+          <view class="avatar-ring">
+            <image wx:if="{{currentDog.avatar}}" src="{{currentDog.avatar}}" mode="aspectFill" />
+            <image wx:else class="avatar-icon-img" src="/images/animal-icons/dog-avatar.png" mode="aspectFit" />
+          </view>
+        </view>
+        <view class="dog-info ml-md">
+          <view class="dog-name">{{currentDog.name}}</view>
+          <view class="dog-meta">{{currentDog.breed}}<text class="dot"> · </text>{{currentDog.age}}</view>
+        </view>
+        <view class="switch-indicator">
+          <text class="switch-label">切换</text>
+          <text class="switch-arrow">›</text>
+        </view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="empty-state animate-scale-in" wx:if="{{dogs.length === 0}}">
+    <image class="empty-hero-icon" src="/images/animal-icons/dog-avatar.png" mode="aspectFit" />
+    <text class="empty-text">还没有添加狗狗</text>
+    <text class="empty-sub">开始记录健康和存粮吧</text>
+    <button class="btn btn-primary mt-xl" bindtap="onAddDog" style="padding:22rpx 64rpx">添加狗狗</button>
+  </view>
+
+  <block wx:if="{{dogs.length > 0}}">
+    <view class="hero-section animate-fade-in-up">
+      <view class="hero-label">健康概览</view>
+      <view class="status-cards status-cards-grid">
+        <view class="status-card {{vaccineStatus}} animate-delay-1">
+          <view class="status-dot {{vaccineStatus}}"></view>
+          <view class="status-content">
+            <view class="status-type">疫苗</view>
+            <view class="status-value">{{vaccineStatusLabel}}</view>
+          </view>
+          <image class="status-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
+        </view>
+        <view class="status-card {{dewormStatus}} animate-delay-2">
+          <view class="status-dot {{dewormStatus}}"></view>
+          <view class="status-content">
+            <view class="status-type">驱虫</view>
+            <view class="status-value">{{dewormStatusLabel}}</view>
+          </view>
+          <image class="status-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
+        </view>
+        <view class="status-card {{foodStockStatus}} animate-delay-3">
+          <view class="status-dot {{foodStockStatus}}"></view>
+          <view class="status-content">
+            <view class="status-type">存粮</view>
+            <view class="status-value">{{foodStockStatusLabel}}</view>
+          </view>
+          <image class="status-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />
+        </view>
+      </view>
+    </view>
+
+    <view class="quick-actions animate-fade-in-up animate-delay-3">
+      <button class="action-card" bindtap="onAddVaccine">
+        <view class="action-accent vaccine-accent"></view>
+        <image class="action-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
+        <text class="action-label">记录疫苗</text>
+      </button>
+      <button class="action-card" bindtap="onAddDeworm">
+        <view class="action-accent deworm-accent"></view>
+        <image class="action-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
+        <text class="action-label">记录驱虫</text>
+      </button>
+      <button class="action-card" bindtap="onAddFoodStock">
+        <view class="action-accent food-accent"></view>
+        <image class="action-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />
+        <text class="action-label">记录存粮</text>
+      </button>
+    </view>
+
+    <view class="section-title">近期提醒 <text wx:if="{{reminders.length > 0}}" style="font-weight:400;color:var(--text-muted);font-size:var(--font-xs)">({{reminders.length}}项)</text></view>
+
+    <view wx:if="{{reminders.length === 0}}" class="card animate-fade-in" style="text-align:center;padding:var(--space-xl)">
+      <image class="done-icon-img" src="/images/animal-icons/check-leaf.png" mode="aspectFit" />
+      <view class="text-secondary" style="margin-top:var(--space-sm)">7日内无临期事项</view>
+    </view>
+
+    <view wx:for="{{reminders}}" wx:key="_id"
+      class="reminder-card card animate-fade-in-up {{'animate-delay-' + (index + 1)}}"
+      bindtap="onTapReminder" data-item="{{item}}">
+      <view class="reminder-inner flex-between">
+        <view class="flex">
+          <view class="reminder-dot {{item.tagColor}}"></view>
+          <view>
+            <view class="reminder-title">{{item.title}}</view>
+            <view class="reminder-date">{{item.date}}</view>
+          </view>
+        </view>
+        <view class="tag tag-{{item.tagColor}}">{{item.tagLabel}}</view>
+      </view>
+    </view>
+  </block>
+</view>

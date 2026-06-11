@@ -1,0 +1,44 @@
+<view class="records-page">
+  <view class="segment-bar animate-fade-in segment-bar-3">
+    <view class="segment-item {{activeTab === 'vaccine' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="vaccine">
+      疫苗
+    </view>
+    <view class="segment-item {{activeTab === 'deworm' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="deworm">
+      驱虫
+    </view>
+    <view class="segment-item {{activeTab === 'food' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="food">
+      存粮
+    </view>
+  </view>
+
+  <view class="empty-state animate-scale-in" wx:if="{{records.length === 0}}">
+    <text class="empty-text">{{activeTab === 'vaccine' ? '暂无疫苗记录' : activeTab === 'deworm' ? '暂无驱虫记录' : '暂无存粮记录'}}</text>
+    <text class="empty-sub">点击 ＋ 添加第一条记录</text>
+  </view>
+
+  <view class="records-list" wx:if="{{records.length > 0}}">
+    <view wx:for="{{records}}" wx:key="_id"
+      class="record-card card animate-fade-in-up {{'animate-delay-' + (index % 5 + 1)}}"
+      bindtap="onEditRecord" data-id="{{item._id}}">
+      <view class="record-main flex-between">
+        <view class="flex-1">
+          <view class="record-title">{{item.displayTitle}}</view>
+          <view class="record-meta-row">
+            <text class="record-meta">{{item.displayDate}}</text>
+            <text class="record-meta" wx:if="{{item.displaySub}}"> · {{item.displaySub}}</text>
+          </view>
+        </view>
+        <view class="flex">
+          <view class="tag tag-{{item.statusColor}}">{{item.statusLabel}}</view>
+          <view class="record-delete" catchtap="onDeleteRecord" data-id="{{item._id}}">
+            <text class="delete-icon">×</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="fab" bindtap="onAddRecord">
+    <text>＋</text>
+  </view>
+</view>

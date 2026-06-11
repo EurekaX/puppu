@@ -1,0 +1,84 @@
+<view class="form-page">
+  <view class="form-body">
+    <view class="form-group" wx:if="{{!dogId}}">
+      <view class="form-label"><text class="required">*</text> 选择狗狗</view>
+      <picker mode="selector" range="{{dogNames}}" bindchange="onDogChange" value="{{dogIndex}}">
+        <view class="picker-value">
+          <text class="{{selectedDogName ? '' : 'placeholder'}}">{{selectedDogName || '请选择'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 驱虫类型</view>
+      <view class="gender-options">
+        <view wx:for="{{dewormTypes}}" wx:key="value" wx:for-item="t"
+          class="gender-chip {{form.type === t.value ? 'active' : ''}}"
+          bindtap="onTypeChange" data-value="{{t.value}}">
+          {{t.label}}
+        </view>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 药品名称</view>
+      <picker mode="selector" range="{{brands}}" bindchange="onBrandChange" value="{{brandIndex}}">
+        <view class="picker-value">
+          <text class="{{form.brandName ? '' : 'placeholder'}}">{{form.brandName || '选择常见品牌'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+      <input class="form-input mt-sm" placeholder="或手动输入药品名称" value="{{form.brandName}}"
+        bindinput="onInput" data-field="brandName" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">使用剂量</view>
+      <input class="form-input" placeholder="如：1粒、1支" value="{{form.dosage}}"
+        bindinput="onInput" data-field="dosage" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 使用日期</view>
+      <picker mode="date" value="{{form.dateTaken}}" end="{{today}}" bindchange="onDateChange">
+        <view class="picker-value">
+          <text>{{form.dateTaken || '选择日期'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 驱虫周期</view>
+      <picker mode="selector" range="{{cycleLabels}}" bindchange="onCycleChange" value="{{cycleIndex}}">
+        <view class="picker-value">
+          <text class="{{selectedCycleLabel ? '' : 'placeholder'}}">{{selectedCycleLabel || '选择周期'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group" wx:if="{{isCustomCycle}}">
+      <view class="form-label"><text class="required">*</text> 自定义天数</view>
+      <input class="form-input" type="number" placeholder="输入天数" value="{{customDays}}"
+        bindinput="onCustomDaysInput" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">下次驱虫日期</view>
+      <picker mode="date" value="{{form.nextDueDate}}" start="{{today}}" bindchange="onNextDateChange">
+        <view class="picker-value">
+          <text>{{form.nextDueDate || '自动推算'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+      <view class="field-hint" wx:if="{{autoCalcHint}}">{{autoCalcHint}}</view>
+    </view>
+  </view>
+
+  <view class="form-footer">
+    <button class="btn btn-ghost" wx:if="{{isEdit}}" bindtap="onDelete">删除</button>
+    <button class="btn btn-primary" bindtap="onSubmit">保存记录</button>
+  </view>
+</view>

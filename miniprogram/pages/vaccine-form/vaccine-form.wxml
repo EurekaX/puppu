@@ -1,0 +1,61 @@
+<view class="form-page">
+  <view class="form-body">
+    <view class="form-group" wx:if="{{!dogId}}">
+      <view class="form-label"><text class="required">*</text> 选择狗狗</view>
+      <picker mode="selector" range="{{dogNames}}" bindchange="onDogChange" value="{{dogIndex}}">
+        <view class="picker-value">
+          <text class="{{selectedDogName ? '' : 'placeholder'}}">{{selectedDogName || '请选择'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 接种类型</view>
+      <picker mode="selector" range="{{typeLabels}}" bindchange="onTypeChange" value="{{typeIndex}}">
+        <view class="picker-value">
+          <text class="{{form.vaccineType ? '' : 'placeholder'}}">{{form.vaccineType || '选择疫苗类型'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 接种日期</view>
+      <picker mode="date" value="{{form.dateTaken}}" end="{{today}}" bindchange="onDateChange">
+        <view class="picker-value">
+          <text>{{form.dateTaken || '选择日期'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">下次接种日期</view>
+      <picker mode="date" value="{{form.nextDueDate}}" start="{{today}}" bindchange="onNextDateChange">
+        <view class="picker-value">
+          <text>{{form.nextDueDate || '自动推算'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+      <view class="field-hint" wx:if="{{autoCalcHint}}">{{autoCalcHint}}</view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">接种医院</view>
+      <input class="form-input" placeholder="医院名称（选填）" value="{{form.hospital}}"
+        bindinput="onInput" data-field="hospital" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">备注</view>
+      <textarea class="form-textarea" placeholder="备注信息（选填）" value="{{form.remark}}"
+        bindinput="onInput" data-field="remark" />
+    </view>
+  </view>
+
+  <view class="form-footer">
+    <button class="btn btn-ghost" wx:if="{{isEdit}}" bindtap="onDelete">删除</button>
+    <button class="btn btn-primary" bindtap="onSubmit">保存记录</button>
+  </view>
+</view>

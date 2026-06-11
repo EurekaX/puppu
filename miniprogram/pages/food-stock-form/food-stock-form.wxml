@@ -1,0 +1,68 @@
+<view class="form-page">
+  <view class="form-body">
+    <view class="form-group" wx:if="{{!dogId}}">
+      <view class="form-label"><text class="required">*</text> 选择狗狗</view>
+      <picker mode="selector" range="{{dogNames}}" bindchange="onDogChange" value="{{dogIndex}}">
+        <view class="picker-value">
+          <text class="{{selectedDogName ? '' : 'placeholder'}}">{{selectedDogName || '请选择'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 粮食名称</view>
+      <input class="form-input" placeholder="如：幼犬粮、冻干双拼粮" value="{{form.brandName}}"
+        bindinput="onInput" data-field="brandName" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 购入日期</view>
+      <picker mode="date" value="{{form.purchaseDate}}" end="{{today}}" bindchange="onDateChange">
+        <view class="picker-value">
+          <text>{{form.purchaseDate || '选择日期'}}</text>
+          <view class="arrow"></view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 总重量</view>
+      <view class="input-with-suffix">
+        <input class="form-input" type="digit" placeholder="输入总重量" value="{{form.totalKg}}"
+          bindinput="onInput" data-field="totalKg" />
+        <text class="input-suffix">kg</text>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label"><text class="required">*</text> 当前剩余</view>
+      <view class="input-with-suffix">
+        <input class="form-input" type="digit" placeholder="输入剩余重量" value="{{form.remainingKg}}"
+          bindinput="onInput" data-field="remainingKg" />
+        <text class="input-suffix">kg</text>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">日均消耗</view>
+      <view class="input-with-suffix">
+        <input class="form-input" type="digit" placeholder="选填，用于估算还能吃几天" value="{{form.dailyConsumeKg}}"
+          bindinput="onInput" data-field="dailyConsumeKg" />
+        <text class="input-suffix">kg/天</text>
+      </view>
+      <view class="field-hint" wx:if="{{stockHint}}">{{stockHint}}</view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">备注</view>
+      <textarea class="form-textarea" placeholder="可记录购买渠道、适口性、批次等" value="{{form.remark}}"
+        bindinput="onInput" data-field="remark" />
+    </view>
+  </view>
+
+  <view class="form-footer">
+    <button class="btn btn-ghost" wx:if="{{isEdit}}" bindtap="onDelete">删除</button>
+    <button class="btn btn-primary" bindtap="onSubmit">保存记录</button>
+  </view>
+</view>

@@ -1,4 +1,5 @@
 const sync = require("./sync");
+
 function generateId() {
   return 'id_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
 }
@@ -26,15 +27,19 @@ function saveDog(data) {
 }
 
 function deleteDog(id) {
+  const vaccineToDelete = getVaccineRecordsRaw().filter(r => r.dogId === id);
+  const dewormToDelete = getDewormRecordsRaw().filter(r => r.dogId === id);
+  const foodToDelete = getFoodStockRecordsRaw().filter(r => r.dogId === id);
+
   wx.setStorageSync('dogs', getDogs().filter(d => d._id !== id));
   wx.setStorageSync('vaccine_records', getVaccineRecordsRaw().filter(r => r.dogId !== id));
   wx.setStorageSync('deworming_records', getDewormRecordsRaw().filter(r => r.dogId !== id));
   wx.setStorageSync('food_stock_records', getFoodStockRecordsRaw().filter(r => r.dogId !== id));
+
   sync.deleteRecord('dogs', id).catch(() => {});
-  // 删除关联记录
-  getVaccineRecordsRaw().filter(r => r.dogId === id).forEach(r => sync.deleteRecord('vaccine_records', r._id).catch(() => {}));
-  getDewormRecordsRaw().filter(r => r.dogId === id).forEach(r => sync.deleteRecord('deworming_records', r._id).catch(() => {}));
-  getFoodStockRecordsRaw().filter(r => r.dogId === id).forEach(r => sync.deleteRecord('food_stock_records', r._id).catch(() => {}));
+  vaccineToDelete.forEach(r => sync.deleteRecord('vaccine_records', r._id).catch(() => {}));
+  dewormToDelete.forEach(r => sync.deleteRecord('deworming_records', r._id).catch(() => {}));
+  foodToDelete.forEach(r => sync.deleteRecord('food_stock_records', r._id).catch(() => {}));
 }
 
 function getVaccineRecordsRaw() {
@@ -237,22 +242,13 @@ function getStatus(nextDueDate) {
   return { status: 'safe', label: '安全(' + days + '天)', color: 'primary' };
 }
 
-
-/**
- * 获取指定狗狗未来 days 天内所有临期提醒
- * @param {string} dogId
- * @param {number} days  - 提前天数，默认 7
- * @returns {Array<{_id, type, title, date, tagColor, tagLabel, recordId}>}
- */
 function getUpcomingReminders(dogId, days = 7) {
   if (!dogId) return [];
   const reminders = [];
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // 疫苗提醒
-  const vaccineRecords = getVaccineRecords(dogId);
-  vaccineRecords.forEach(r => {
+  getVaccineRecords(dogId).forEach(r => {
     if (!r.nextDueDate) return;
     const due = new Date(r.nextDueDate);
     due.setHours(0, 0, 0, 0);
@@ -262,7 +258,7 @@ function getUpcomingReminders(dogId, days = 7) {
       reminders.push({
         _id: 'v_' + r._id,
         type: 'vaccine',
-        title: r.vaccineType,
+        title: r.vaccineType || '疫苗',
         date: formatDate(r.nextDueDate),
         dueDays: d,
         tagColor: status.status === 'overdue' ? 'danger' : 'warning',
@@ -272,9 +268,7 @@ function getUpcomingReminders(dogId, days = 7) {
     }
   });
 
-  // 驱虫提醒
-  const dewormRecords = getLatestDewormRecordsByType(dogId);
-  dewormRecords.forEach(r => {
+  getLatestDewormRecordsByType(dogId).forEach(r => {
     if (!r.nextDueDate) return;
     const due = new Date(r.nextDueDate);
     due.setHours(0, 0, 0, 0);
@@ -294,9 +288,7 @@ function getUpcomingReminders(dogId, days = 7) {
     }
   });
 
-  // 存粮提醒：按日消耗估算剩余天数
-  const foodRecords = getFoodStockRecords(dogId);
-  foodRecords.forEach(r => {
+  getFoodStockRecords(dogId).forEach(r => {
     const remainingKg = Number(r.remainingKg || 0);
     const dailyConsumeKg = Number(r.dailyConsumeKg || 0);
 
@@ -329,12 +321,9 @@ function getUpcomingReminders(dogId, days = 7) {
     }
   });
 
-  // 按到期紧迫程度排序
   reminders.sort((a, b) => a.dueDays - b.dueDays);
-
   return reminders;
 }
-
 
 module.exports = {
   generateId,
@@ -347,6 +336,7 @@ module.exports = {
   saveVaccineRecord,
   deleteVaccineRecord,
   getDewormRecords,
+  getLatestDewormRecordsByType,
   getDewormRecord,
   saveDewormRecord,
   deleteDewormRecord,

@@ -19,7 +19,7 @@ const VACCINE_TYPES = [
 const DEWORM_TYPES = [
   { label: '体内驱虫', value: 0 },
   { label: '体外驱虫', value: 1 },
-  { label: '内外一体', value: 2 }
+  { label: '内外同驱', value: 2 }
 ];
 
 const DEWORM_BRANDS = [
@@ -35,10 +35,10 @@ const DEWORM_CYCLES = [
 ];
 
 const GENDER_OPTIONS = [
-  { label: '弟弟 ♂', value: 0 },
-  { label: '妹妹 ♀', value: 1 },
-  { label: '已绝育公 ♂', value: 2 },
-  { label: '已绝育母 ♀', value: 3 }
+  { label: '弟弟', value: 0 },
+  { label: '妹妹', value: 1 },
+  { label: '已绝育公犬', value: 2 },
+  { label: '已绝育母犬', value: 3 }
 ];
 
 module.exports = {

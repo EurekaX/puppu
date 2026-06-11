@@ -1,10 +1,40 @@
 .records-page {
   min-height: 100vh;
-  padding-bottom: calc(110rpx + env(safe-area-inset-bottom) + 24rpx);
+  padding: 24rpx 0 calc(132rpx + env(safe-area-inset-bottom));
+}
+
+.records-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8rpx var(--page-padding) var(--space-sm);
+  padding: 24rpx 28rpx;
+  border: 2rpx solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.records-kicker {
+  color: var(--primary-deep);
+  font-size: var(--font-xs);
+  font-weight: 900;
+}
+
+.records-title {
+  color: var(--text);
+  font-size: 44rpx;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.records-header-icon {
+  width: 86rpx;
+  height: 86rpx;
 }
 
 .segment-bar-3 .segment-item {
-  font-size: 22rpx;
+  font-size: var(--font-sm);
 }
 
 .records-list {
@@ -12,57 +42,83 @@
 }
 
 .record-card {
-  border: 2rpx solid var(--border);
-  transition: all 0.15s ease;
-  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 132rpx;
+  padding: 22rpx 20rpx;
 }
 
 .record-card:active {
   transform: translateY(3rpx);
 }
 
+.record-mark {
+  width: 22rpx;
+  height: 58rpx;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.record-mark.deworm { background: var(--honey); }
+.record-mark.food { background: var(--wood-light); }
+
 .record-main {
-  width: 100%;
+  min-width: 0;
+  flex: 1;
 }
 
 .record-title {
+  color: var(--text);
   font-size: var(--font-md);
-  font-weight: 700;
-  margin-bottom: 6rpx;
-  letter-spacing: 0.5rpx;
+  font-weight: 900;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .record-meta-row {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 4rpx;
 }
 
 .record-meta {
-  font-size: var(--font-sm);
   color: var(--text-secondary);
+  font-size: var(--font-sm);
+}
+
+.record-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12rpx;
+  flex-shrink: 0;
 }
 
 .record-delete {
-  width: 44rpx;
-  height: 44rpx;
+  width: 48rpx;
+  height: 48rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: var(--space-sm);
-  border-radius: 50%;
-  background: var(--card-bg-warm);
   border: 2rpx solid var(--border-light);
-}
-
-.delete-icon {
-  font-size: 28rpx;
-  color: var(--text-muted);
-  font-weight: 700;
-  line-height: 1;
+  border-radius: 50%;
+  background: var(--paper-deep);
 }
 
 .record-delete:active {
+  border-color: var(--danger);
   background: var(--danger-light);
+}
+
+.delete-icon {
+  color: var(--text-muted);
+  font-size: 34rpx;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .record-delete:active .delete-icon {

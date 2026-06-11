@@ -21,8 +21,8 @@ Page({
         const status = storage.getStatus(record.nextDueDate);
         return {
           ...record,
-          displayTitle: record.vaccineType,
-          displayDate: '接种: ' + storage.formatDate(record.dateTaken),
+          displayTitle: record.vaccineType || '疫苗记录',
+          displayDate: '接种：' + storage.formatDate(record.dateTaken),
           displaySub: record.hospital || '',
           statusColor: status.status === 'safe' ? 'safe' : status.status === 'warning' ? 'warning' : 'danger',
           statusLabel: status.label
@@ -34,9 +34,9 @@ Page({
         const typeLabel = DEWORM_TYPES.find((item) => item.value === record.type);
         return {
           ...record,
-          displayTitle: record.brandName + ' (' + (typeLabel ? typeLabel.label : '') + ')',
-          displayDate: '用药: ' + storage.formatDate(record.dateTaken),
-          displaySub: '周期: ' + record.periodMonths + '个月',
+          displayTitle: (record.brandName || '驱虫记录') + '（' + (typeLabel ? typeLabel.label : '未分类') + '）',
+          displayDate: '用药：' + storage.formatDate(record.dateTaken),
+          displaySub: '周期：' + record.periodMonths + '个月',
           statusColor: status.status === 'safe' ? 'safe' : status.status === 'warning' ? 'warning' : 'danger',
           statusLabel: status.label
         };
@@ -46,8 +46,8 @@ Page({
         const remainingKg = Number(record.remainingKg || 0);
         return {
           ...record,
-          displayTitle: record.brandName,
-          displayDate: '购入: ' + storage.formatDate(record.purchaseDate),
+          displayTitle: record.brandName || '存粮记录',
+          displayDate: '购入：' + storage.formatDate(record.purchaseDate),
           displaySub: '总量 ' + record.totalKg + 'kg · 剩余 ' + remainingKg + 'kg',
           statusColor: remainingKg <= 0 ? 'danger' : remainingKg <= 1 ? 'warning' : 'safe',
           statusLabel: remainingKg <= 0 ? '已缺粮' : remainingKg <= 1 ? '库存偏低' : '库存充足'
@@ -98,7 +98,7 @@ Page({
 
     wx.showModal({
       title: '确认删除',
-      content: '删除后将无法恢复',
+      content: '删除后将无法恢复这条记录。',
       success: (res) => {
         if (!res.confirm) return;
 

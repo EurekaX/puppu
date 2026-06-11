@@ -7,9 +7,9 @@ Component({
   lifetimes: {
     attached() {
       const list = [
-        { pagePath: '/pages/index/index',     iconPath: '/images/tab-home.png',     selectedIconPath: '/images/tab-home-active.png' },
-        { pagePath: '/pages/records/records', iconPath: '/images/tab-records.png',  selectedIconPath: '/images/tab-records-active.png' },
-        { pagePath: '/pages/profile/profile', iconPath: '/images/tab-profile.png',  selectedIconPath: '/images/tab-profile-active.png' }
+        { text: '首页', pagePath: '/pages/index/index', iconPath: '/images/tab-home.png', selectedIconPath: '/images/tab-home-active.png' },
+        { text: '记录', pagePath: '/pages/records/records', iconPath: '/images/tab-records.png', selectedIconPath: '/images/tab-records-active.png' },
+        { text: '我的', pagePath: '/pages/profile/profile', iconPath: '/images/tab-profile.png', selectedIconPath: '/images/tab-profile-active.png' }
       ];
 
       const pages = getCurrentPages();

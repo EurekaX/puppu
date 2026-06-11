@@ -49,7 +49,6 @@ Page({
       : { status: 'none', label: '暂无记录', color: 'text-secondary' };
 
     const foodStockSummary = storage.getFoodStockSummary(currentDog ? currentDog._id : null);
-
     const reminders = storage.getUpcomingReminders(currentDog ? currentDog._id : null, 7);
 
     this.setData({
@@ -68,7 +67,7 @@ Page({
   },
 
   onSwitchDog(e) {
-    const idx = parseInt(e.detail.value);
+    const idx = parseInt(e.detail.value, 10);
     const dog = this.data.dogs[idx];
     getApp().globalData.currentDogId = dog._id;
     this.loadData();

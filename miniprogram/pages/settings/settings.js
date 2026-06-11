@@ -11,9 +11,11 @@ Page({
   onLoad() {
     const vaccineNotify = wx.getStorageSync('setting_vaccine_notify');
     const dewormNotify = wx.getStorageSync('setting_deworm_notify');
+    const hasSubscribed = wx.getStorageSync('subscribe_accepted') === true;
     this.setData({
       vaccineNotify: vaccineNotify !== false,
-      dewormNotify: dewormNotify !== false
+      dewormNotify: dewormNotify !== false,
+      hasSubscribed
     });
   },
 
@@ -21,7 +23,6 @@ Page({
     const value = e.detail.value;
     this.setData({ vaccineNotify: value });
     wx.setStorageSync('setting_vaccine_notify', value);
-
     if (value) this.requestSubscribe();
   },
 
@@ -29,7 +30,6 @@ Page({
     const value = e.detail.value;
     this.setData({ dewormNotify: value });
     wx.setStorageSync('setting_deworm_notify', value);
-
     if (value) this.requestSubscribe();
   },
 
@@ -38,11 +38,10 @@ Page({
   },
 
   requestSubscribe() {
-    // 替换为你的模板ID——在微信公众平台 -> 订阅消息 中申请
     const tmplIds = [
-      'Lw3_o2d4mJKNtEM3Yrfxp_l17_2iBoxt6v77-6BvudA',  // 疫苗到期提醒
-      'Lw3_o2d4mJKNtEM3Yrfxp_l17_2iBoxt6v77-6BvudA',  // 驱虫到期提醒
-      'Lw3_o2d4mJKNtEM3Yrfxp_l17_2iBoxt6v77-6BvudA', // 存粮不足提醒
+      'Lw3_o2d4mJKNtEM3Yrfxp_l17_2iBoxt6v77-6BvudA',
+      'Lw3_o2d4mJKNtEM3Yrfxp_l17_2iBoxt6v77-6BvudA',
+      'Lw3_o2d4mJKNtEM3Yrfxp_l17_2iBoxt6v77-6BvudA'
     ].filter(Boolean);
 
     if (tmplIds.length === 0) {
@@ -52,9 +51,8 @@ Page({
 
     if (wx.requestSubscribeMessage) {
       wx.requestSubscribeMessage({
-        tmplIds: tmplIds,
+        tmplIds,
         success: (res) => {
-          // 检查是否至少有一个模板被授权
           let accepted = false;
           for (const id of tmplIds) {
             if (res[id] === 'accept') {
@@ -66,15 +64,10 @@ Page({
             hasSubscribed: accepted,
             subscribeResult: accepted ? '已授权' : '用户拒绝'
           });
-          if (accepted) {
-            wx.showToast({ title: '授权成功', icon: 'success' });
-            //   记录授权状态
-            wx.setStorageSync('subscribe_accepted', true);
-          } else {
-            wx.showToast({ title: '已拒绝授权', icon: 'none' });
-          }
+          wx.setStorageSync('subscribe_accepted', accepted);
+          wx.showToast({ title: accepted ? '授权成功' : '已拒绝授权', icon: accepted ? 'success' : 'none' });
         },
-        fail: (err) => {
+        fail: () => {
           this.setData({ subscribeResult: '授权失败' });
           wx.showToast({ title: '授权失败', icon: 'none' });
         }
@@ -106,7 +99,7 @@ Page({
       title: '危险操作',
       content: '将删除所有狗狗、疫苗、驱虫和存粮记录，此操作不可恢复。',
       confirmText: '确认清除',
-      confirmColor: '#F44336',
+      confirmColor: '#D96C5F',
       success: (res) => {
         if (!res.confirm) return;
 

@@ -44,7 +44,7 @@ Page({
     const dog = storage.getDog(id);
     wx.showModal({
       title: '确认删除',
-      content: '将删除“' + dog.name + '”及其所有疫苗、驱虫和存粮记录，删除后无法恢复。',
+      content: '将删除“' + dog.name + '”以及它的疫苗、驱虫和存粮记录，删除后无法恢复。',
       success: (res) => {
         if (!res.confirm) return;
 

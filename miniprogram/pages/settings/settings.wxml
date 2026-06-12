@@ -14,7 +14,7 @@
         <view class="settings-label">疫苗到期提醒</view>
         <view class="settings-desc">到期前推送微信提醒</view>
       </view>
-      <switch checked="{{vaccineNotify}}" bindchange="onVaccineNotifyChange" color="#86B56C" />
+      <switch checked="{{vaccineNotify}}" bindchange="onVaccineNotifyChange" color="#8ac68a" />
     </view>
     <view class="divider"></view>
     <view class="settings-row">
@@ -22,7 +22,7 @@
         <view class="settings-label">驱虫到期提醒</view>
         <view class="settings-desc">只提醒同类型最新驱虫记录</view>
       </view>
-      <switch checked="{{dewormNotify}}" bindchange="onDewormNotifyChange" color="#86B56C" />
+      <switch checked="{{dewormNotify}}" bindchange="onDewormNotifyChange" color="#8ac68a" />
     </view>
   </view>
 

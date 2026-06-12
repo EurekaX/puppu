@@ -1,20 +1,20 @@
 # Goal
 
-Regenerate the mini program PNG icon set in a minimal geometric, cute island-life style with soft paper texture and low-saturation colors.
+Replace the current cyan/deep-green accent treatment with animal-island `app-green` (`#8ac68a` with white text) for selected and action states.
 
 # Approach
 
-Keep all existing filenames under `miniprogram/images/animal-icons` so frontend references remain stable. Generate each icon as a centered raster asset on a removable chroma-key background, remove the background locally, normalize to transparent 256x256 PNG, and validate dimensions/alpha.
+Keep the native Mini Program UI structure unchanged. Update shared color tokens first so global controls inherit the new app-green accent, then patch explicit one-off colors in `app.json`, settings switches, tabbar active state, and the home dog switch pill. Repair any visible settings-page mojibake encountered while touching that page.
 
 # Tasks
 
-- [x] Snapshot the existing icon set and confirm target filenames
-- [x] Generate eight replacement icons with a shared style prompt
-- [x] Remove chroma-key backgrounds and overwrite the existing PNGs
-- [x] Validate PNG dimensions, alpha channel, transparent corners, and frontend asset references
-- [x] Commit the regenerated icon set
+- [x] Update global primary tokens to `#8ac68a` and white foreground for primary filled controls
+- [x] Update explicit selected/switch colors to `#8ac68a`
+- [x] Make the home `切换` pill use app-green background with white text
+- [x] Repair settings page WXML visible Chinese text
+- [x] Run syntax/structure checks
 
 # Risks
 
-- Built-in image generation may produce small style differences between icons; prompts will repeat the same palette, texture, and composition constraints to reduce drift.
-- Chroma-key removal can leave fringes if the generated subject touches the key background; validation will check alpha and corners.
+- The Mini Program `switch` component only accepts a single `color` prop, so its foreground/handle behavior remains platform-controlled.
+- Existing generated PNG icon colors are unchanged in this pass.

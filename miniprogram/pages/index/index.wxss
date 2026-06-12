@@ -85,8 +85,9 @@
   padding: 10rpx 20rpx;
   border: 2rpx solid var(--primary);
   border-radius: var(--radius-full);
-  background: var(--primary-light);
-  color: var(--primary-deep);
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: 0 3rpx 0 #6faa6f;
   font-size: var(--font-xs);
   font-weight: 800;
 }

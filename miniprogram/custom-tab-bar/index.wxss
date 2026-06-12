@@ -28,7 +28,7 @@
 }
 
 .tabbar-item.active {
-  color: #4F7A3C;
+  color: #8ac68a;
 }
 
 .tabbar-icon {

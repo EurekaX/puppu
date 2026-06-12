@@ -1,23 +1,20 @@
 # Goal
 
-Rebuild the mini program frontend into a polished Animal Crossing-inspired puppy care interface while keeping existing page flow and data behavior stable.
+Regenerate the mini program PNG icon set in a minimal geometric, cute island-life style with soft paper texture and low-saturation colors.
 
 # Approach
 
-Use the existing native WeChat Mini Program architecture. Do not introduce React or browser-only APIs. Treat `animal-island-ui` as visual reference only because the package is React-based. Repair visible mojibake text first, then apply a shared warm island design system to the main tab pages, records, profile, settings, and shared form controls.
+Keep all existing filenames under `miniprogram/images/animal-icons` so frontend references remain stable. Generate each icon as a centered raster asset on a removable chroma-key background, remove the background locally, normalize to transparent 256x256 PNG, and validate dimensions/alpha.
 
 # Tasks
 
-- [x] Keep the baseline project commit and remote configuration intact
-- [x] Repair shared Chinese labels in constants, storage summaries, reminders, and page scripts
-- [x] Rebuild the home dashboard as a cozy island notice board with stable status cards, quick actions, reminders, and empty state
-- [x] Rebuild records and profile pages with rounded cards, soft paper colors, leaf/wood accents, and PNG icons instead of emoji
-- [x] Refresh the custom tab bar and settings page to match the same visual language
-- [x] Run syntax, JSON, reminder regression, asset reference, and browser API checks
-- [ ] Commit the refactor and retry pushing `main` to `EurekaX/puppu.git`
+- [x] Snapshot the existing icon set and confirm target filenames
+- [x] Generate eight replacement icons with a shared style prompt
+- [x] Remove chroma-key backgrounds and overwrite the existing PNGs
+- [x] Validate PNG dimensions, alpha channel, transparent corners, and frontend asset references
+- [x] Commit the regenerated icon set
 
 # Risks
 
-- The project is a native WeChat Mini Program, so `animal-island-ui` npm components cannot be mounted directly without migrating to a React/Taro-style stack.
-- Some form pages may still have older visual structure after this pass; shared tokens will improve them, but the primary refactor scope is the visible tab experience and settings.
-- Remote push may continue to fail if the current network cannot reach GitHub reliably.
+- Built-in image generation may produce small style differences between icons; prompts will repeat the same palette, texture, and composition constraints to reduce drift.
+- Chroma-key removal can leave fringes if the generated subject touches the key background; validation will check alpha and corners.

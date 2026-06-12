@@ -95,7 +95,7 @@
 .status-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-sm);
+  gap: 20rpx;
   padding: 0 var(--page-padding);
 }
 
@@ -105,27 +105,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22rpx;
-  border: 2rpx solid var(--border);
+  padding: 22rpx 22rpx 22rpx 42rpx;
+  border: 3rpx solid var(--border);
   border-radius: var(--radius);
   background: var(--paper);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 3rpx 0 #D8C6A6, 0 12rpx 22rpx rgba(86, 63, 36, 0.12);
   overflow: hidden;
 }
 
 .status-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 14rpx;
-  height: 100%;
+  top: 18rpx;
+  bottom: 18rpx;
+  left: 16rpx;
+  width: 12rpx;
+  height: auto;
+  border-radius: var(--radius-full);
   background: var(--leaf);
+  box-shadow: 0 0 0 3rpx rgba(255, 255, 255, 0.72);
 }
 
 .status-card.safe {
   background: var(--primary);
+  border-color: #6faa6f;
   color: #FFFFFF;
+  box-shadow: 0 4rpx 0 #6faa6f, 0 14rpx 24rpx rgba(86, 63, 36, 0.16);
 }
 .status-card.warning { background: var(--honey-light); }
 .status-card.overdue { background: var(--danger-light); }
@@ -133,13 +138,13 @@
 .status-card.warning::before { background: var(--honey); }
 .status-card.overdue::before { background: var(--danger); }
 .status-card.none::before { background: var(--text-muted); }
+.status-card.safe::before { background: #FFFFFF; }
 .status-card.wide { grid-column: span 2; }
 
 .status-copy {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  padding-left: 10rpx;
 }
 
 .status-type {

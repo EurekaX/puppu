@@ -1,20 +1,19 @@
 # Goal
 
-Make the vaccine, deworm, and food-stock add/edit flows show app-green (`#8ac68a` + white) for saved/selected states.
+Improve the home health status cards so borders and side rails remain legible on app-green cards.
 
 # Approach
 
-Keep form behavior unchanged. Use the existing global form/button/tag classes so all three forms inherit one consistent app-green treatment. Repair visible WXML mojibake in the three form pages while touching them.
+Keep the current app-green saved/safe state. Increase separation by adding a stronger card border, a visible inset side rail, more internal left padding, and a slightly larger grid gap. Avoid changing data or navigation behavior.
 
 # Tasks
 
-- [x] Make success/safe tags and status accents use app-green with white text where appropriate
-- [x] Keep form submit buttons on app-green + white
-- [x] Repair vaccine form WXML labels/placeholders/buttons
-- [x] Repair deworm form WXML labels/placeholders/buttons
-- [x] Repair food-stock form WXML labels/placeholders/buttons
-- [x] Run JSON, JS, WXML/WXSS, and reminder regression checks
+- [x] Identify low-contrast health card border and side rail styles
+- [x] Strengthen status card border and shadow
+- [x] Convert the side rail to an inset high-contrast rail
+- [x] Keep app-green safe cards with white text
+- [x] Run structure and syntax checks
 
 # Risks
 
-- Native `wx.showToast({ icon: 'success' })` color cannot be styled by WXSS; this pass covers in-page colors after add/edit.
+- Full app-green cards are dense by nature; the fix improves contrast without returning to pale green cards.

@@ -219,7 +219,7 @@ input, textarea { border: none; outline: none; }
   white-space: nowrap;
 }
 
-.tag-safe { background: var(--primary-light); color: var(--primary-deep); }
+.tag-safe { background: var(--primary); color: var(--primary-contrast); }
 .tag-warning { background: var(--honey-light); color: #9B6417; }
 .tag-danger { background: var(--danger-light); color: var(--danger); }
 

@@ -1,20 +1,20 @@
 # Goal
 
-Replace the current cyan/deep-green accent treatment with animal-island `app-green` (`#8ac68a` with white text) for selected and action states.
+Make the vaccine, deworm, and food-stock add/edit flows show app-green (`#8ac68a` + white) for saved/selected states.
 
 # Approach
 
-Keep the native Mini Program UI structure unchanged. Update shared color tokens first so global controls inherit the new app-green accent, then patch explicit one-off colors in `app.json`, settings switches, tabbar active state, and the home dog switch pill. Repair any visible settings-page mojibake encountered while touching that page.
+Keep form behavior unchanged. Use the existing global form/button/tag classes so all three forms inherit one consistent app-green treatment. Repair visible WXML mojibake in the three form pages while touching them.
 
 # Tasks
 
-- [x] Update global primary tokens to `#8ac68a` and white foreground for primary filled controls
-- [x] Update explicit selected/switch colors to `#8ac68a`
-- [x] Make the home `切换` pill use app-green background with white text
-- [x] Repair settings page WXML visible Chinese text
-- [x] Run syntax/structure checks
+- [x] Make success/safe tags and status accents use app-green with white text where appropriate
+- [x] Keep form submit buttons on app-green + white
+- [x] Repair vaccine form WXML labels/placeholders/buttons
+- [x] Repair deworm form WXML labels/placeholders/buttons
+- [x] Repair food-stock form WXML labels/placeholders/buttons
+- [x] Run JSON, JS, WXML/WXSS, and reminder regression checks
 
 # Risks
 
-- The Mini Program `switch` component only accepts a single `color` prop, so its foreground/handle behavior remains platform-controlled.
-- Existing generated PNG icon colors are unchanged in this pass.
+- Native `wx.showToast({ icon: 'success' })` color cannot be styled by WXSS; this pass covers in-page colors after add/edit.

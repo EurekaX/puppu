@@ -1,17 +1,17 @@
 # Goal
 
-Make the quick record notebook page content evenly distributed and cleaner.
+Adjust the quick record page content to occupy a larger centered notebook area.
 
 # Approach
 
-Keep the existing swiper and navigation. Replace the text action with a compact plus control, remove the inner page border, and lay out icon, copy, and action as three evenly spaced notebook elements.
+Keep the existing swiper and navigation. Change the page body from full-width equal thirds to a centered content band with weighted columns for icon, copy, and plus action, and tune spacing so the record controls feel grouped but not cramped.
 
 # Tasks
 
 - [x] Review current quick record WXML, WXSS, JS, and page registration
-- [x] Replace "去记录" with plus controls
-- [x] Remove the inner page border
-- [x] Rebuild the page body as a three-column equal layout
+- [x] Rebalance the content band width and padding
+- [x] Weight icon, copy, and plus columns to match the reference layout
+- [x] Tune text alignment and control scale
 - [x] Validate JSON, JS syntax, and whitespace
 
 # Risks

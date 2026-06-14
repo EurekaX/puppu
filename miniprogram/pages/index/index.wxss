@@ -361,11 +361,11 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(26rpx, 0.55fr) 80rpx minmax(156rpx, 1.45fr) 62rpx minmax(26rpx, 0.55fr);
   align-items: center;
   justify-items: center;
-  column-gap: 14rpx;
-  padding: 18rpx 28rpx 18rpx 34rpx;
+  column-gap: 12rpx;
+  padding: 18rpx 18rpx 18rpx 32rpx;
   border: 0;
   border-radius: 26rpx;
   background: transparent;
@@ -432,8 +432,9 @@
 .record-icon-wrap {
   position: relative;
   z-index: 1;
-  width: 72rpx;
-  height: 72rpx;
+  grid-column: 2;
+  width: 76rpx;
+  height: 76rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -447,17 +448,18 @@
 }
 
 .record-icon-img {
-  width: 56rpx;
-  height: 56rpx;
+  width: 58rpx;
+  height: 58rpx;
 }
 
 .record-copy {
   position: relative;
   z-index: 1;
+  grid-column: 3;
   min-width: 0;
   width: 100%;
   margin-left: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .record-card-kicker {
@@ -474,7 +476,7 @@
   z-index: 1;
   margin-top: 0;
   color: var(--text);
-  font-size: 31rpx;
+  font-size: 33rpx;
   font-weight: 900;
   line-height: 1.2;
   overflow: hidden;
@@ -496,8 +498,9 @@
 .record-card-action {
   position: relative;
   z-index: 1;
-  width: 52rpx;
-  height: 52rpx;
+  grid-column: 4;
+  width: 56rpx;
+  height: 56rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,7 +509,7 @@
   border: 0;
   background: var(--primary);
   color: #FFFFFF;
-  font-size: 38rpx;
+  font-size: 40rpx;
   font-weight: 900;
   flex-shrink: 0;
   line-height: 1;

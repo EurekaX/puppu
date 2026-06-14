@@ -1,17 +1,17 @@
 # Goal
 
-Change the home quick record notebook so flipping pages changes the active record type instead of showing all record cards on one page.
+Remove the nested card look from the home quick record notebook so each swiper page feels like one continuous notebook page.
 
 # Approach
 
-Keep the existing vaccine, deworm, and food stock tap handlers. Replace the horizontal scroll stack with a native Mini Program swiper: one notebook page is visible at a time, swiping flips between vaccine, deworm, and food stock, with page dots and light page-curl visuals.
+Keep the existing swiper and tap handlers. Move visual weight to the outer notebook and page surface, then make the record button a transparent content layer with no inner border, no independent card shadow, and only lightweight page-curl and tap feedback.
 
 # Tasks
 
 - [x] Review current home WXML, WXSS, JS, and page registration
-- [x] Replace the quick record scroll area with a swiper
-- [x] Track current notebook page for indicators
-- [x] Restyle quick record pages as single-page notebook sheets
+- [x] Identify nested border/card styling in quick record page
+- [x] Remove inner card border, background, and heavy shadow
+- [x] Keep one-piece notebook page colors and page-curl detail
 - [x] Validate JSON, JS syntax, and whitespace
 
 # Risks

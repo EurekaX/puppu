@@ -1,17 +1,17 @@
 # Goal
 
-Make each quick record page color fill the notebook body instead of appearing as a small centered color block.
+Rebuild the home quick record notebook with one unified cream paper surface and stronger notebook details.
 
 # Approach
 
-Keep the existing swiper and tap handlers. Move the vaccine, deworm, and food page color classes from the inner button to the swiper page surface, make the page fill the available notebook body, and keep the button as a transparent full-page hit area.
+Keep the existing swiper and tap handlers. Remove the vaccine, deworm, and food color page backgrounds, reuse the outer notebook paper color across the whole component, and add subtle ruled lines, binding details, page layers, and a soft page curl to reinforce the notebook style.
 
 # Tasks
 
-- [x] Review current home WXML, WXSS, JS, and page registration
-- [x] Identify color block being applied to the inner button
-- [x] Move color page classes to the swiper page surface
-- [x] Expand the page surface to fill the notebook body
+- [x] Review current home quick record WXML, WXSS, JS, and page registration
+- [x] Identify the colored page gradients causing the visual mismatch
+- [x] Remove pink, yellow, and green page backgrounds
+- [x] Strengthen notebook paper, binding, and page-turn styling
 - [x] Validate JSON, JS syntax, and whitespace
 
 # Risks

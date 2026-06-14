@@ -108,6 +108,15 @@ Page({
     });
   },
 
+  onTapQuickRecordTab(e) {
+    const index = Number(e.currentTarget.dataset.index);
+    if (Number.isNaN(index) || index === this.data.quickRecordIndex) return;
+
+    this.setData({
+      quickRecordIndex: index
+    });
+  },
+
   onTapReminder(e) {
     const item = e.currentTarget.dataset.item;
     if (item.type === 'vaccine') {

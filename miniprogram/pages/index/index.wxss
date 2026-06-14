@@ -176,7 +176,7 @@
 .quick-record-book {
   position: relative;
   margin: var(--space-md) var(--page-padding) 0;
-  padding: 22rpx 18rpx 18rpx 58rpx;
+  padding: 20rpx 18rpx 16rpx 58rpx;
   border: 3rpx solid #A8CE97;
   border-radius: 34rpx;
   background:
@@ -214,6 +214,7 @@
   border-radius: 50% 0 0 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(216, 198, 166, 0.30));
   transform: rotate(8deg);
+  opacity: 0.42;
   pointer-events: none;
 }
 
@@ -239,13 +240,7 @@
 }
 
 .book-leaf {
-  position: absolute;
-  z-index: 1;
-  width: 28rpx;
-  height: 22rpx;
-  border-radius: 50% 0 50% 50%;
-  background: rgba(138, 198, 138, 0.35);
-  pointer-events: none;
+  display: none;
 }
 
 .leaf-one {
@@ -266,9 +261,8 @@
   z-index: 2;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  padding-right: 6rpx;
+  justify-content: flex-start;
+  padding-right: 8rpx;
 }
 
 .quick-record-title {
@@ -284,6 +278,40 @@
   font-size: 21rpx;
   font-weight: 700;
   line-height: 1.3;
+}
+
+.quick-record-tabs {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rpx;
+  min-height: 48rpx;
+  margin-top: 14rpx;
+  padding: 5rpx;
+  border: 2rpx solid rgba(168, 206, 151, 0.36);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: inset 0 2rpx 0 rgba(255, 255, 255, 0.60);
+}
+
+.quick-record-tab {
+  min-width: 0;
+  height: 38rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: rgba(111, 75, 42, 0.66);
+  font-size: 21rpx;
+  font-weight: 900;
+  transition: all 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quick-record-tab.active {
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: 0 3rpx 0 #6faa6f;
 }
 
 .book-sticker {
@@ -306,8 +334,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 198rpx;
-  margin-top: 12rpx;
+  height: 166rpx;
+  margin-top: 10rpx;
   overflow: visible;
   border-radius: 28rpx;
 }
@@ -340,10 +368,10 @@
 .quick-record-page::after {
   content: "";
   position: absolute;
-  top: 18rpx;
+  top: 16rpx;
   right: 0;
   width: 42rpx;
-  height: 168rpx;
+  height: 136rpx;
   border-radius: 0 24rpx 28rpx 0;
   background: rgba(255, 249, 232, 0.86);
   box-shadow: 4rpx 5rpx 12rpx rgba(86, 63, 36, 0.08);
@@ -358,6 +386,7 @@
   right: 22rpx;
   background: rgba(244, 234, 207, 0.48);
   transform: rotate(4deg);
+  display: none;
 }
 
 .quick-record-card {
@@ -367,8 +396,8 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 22rpx 24rpx 22rpx 30rpx;
+  justify-content: flex-start;
+  padding: 18rpx 22rpx 18rpx 30rpx;
   border: 0;
   border-radius: 26rpx;
   background: transparent;
@@ -382,9 +411,9 @@
   content: "";
   position: absolute;
   left: 16rpx;
-  top: 18rpx;
-  bottom: 18rpx;
-  width: 5rpx;
+  top: 22rpx;
+  bottom: 22rpx;
+  width: 4rpx;
   border-radius: var(--radius-full);
   background: linear-gradient(180deg, rgba(168, 206, 151, 0.55), rgba(216, 198, 166, 0.38));
 }
@@ -424,8 +453,8 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 48rpx;
-  height: 48rpx;
+  width: 42rpx;
+  height: 42rpx;
   border-radius: 28rpx 0 28rpx 0;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.70) 0 48%, rgba(216, 198, 166, 0.20) 52% 100%);
@@ -435,12 +464,12 @@
 .record-icon-wrap {
   position: relative;
   z-index: 1;
-  width: 82rpx;
-  height: 82rpx;
+  width: 72rpx;
+  height: 72rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 28rpx;
+  border-radius: 24rpx;
   border: 2rpx solid rgba(216, 198, 166, 0.48);
   background: rgba(255, 255, 255, 0.54);
   box-shadow:
@@ -450,8 +479,8 @@
 }
 
 .record-icon-img {
-  width: 64rpx;
-  height: 64rpx;
+  width: 56rpx;
+  height: 56rpx;
 }
 
 .record-copy {
@@ -459,10 +488,11 @@
   z-index: 1;
   min-width: 0;
   flex: 1;
-  margin-left: 20rpx;
+  margin-left: 18rpx;
 }
 
 .record-card-kicker {
+  display: none;
   color: var(--record-accent);
   font-size: 18rpx;
   font-weight: 900;
@@ -473,7 +503,7 @@
 .record-card-title {
   position: relative;
   z-index: 1;
-  margin-top: 8rpx;
+  margin-top: 0;
   color: var(--text);
   font-size: 32rpx;
   font-weight: 900;
@@ -481,9 +511,9 @@
 }
 
 .record-card-desc {
-  margin-top: 6rpx;
+  margin-top: 8rpx;
   color: rgba(111, 75, 42, 0.72);
-  font-size: 21rpx;
+  font-size: 20rpx;
   font-weight: 700;
   line-height: 1.3;
   overflow: hidden;
@@ -494,12 +524,12 @@
 .record-card-action {
   position: relative;
   z-index: 1;
-  width: 104rpx;
-  height: 44rpx;
+  width: 94rpx;
+  height: 42rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 18rpx;
+  margin-left: 12rpx;
   border-radius: var(--radius-full);
   border: 2rpx solid rgba(216, 198, 166, 0.42);
   background: rgba(255, 255, 255, 0.58);
@@ -511,13 +541,7 @@
 }
 
 .quick-record-dots {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10rpx;
-  margin-top: -2rpx;
+  display: none;
 }
 
 .quick-record-dot {
@@ -535,13 +559,7 @@
 }
 
 .quick-record-hint {
-  position: relative;
-  z-index: 2;
-  margin-top: 8rpx;
-  color: var(--text-secondary);
-  font-size: 20rpx;
-  font-weight: 700;
-  text-align: center;
+  display: none;
 }
 
 .section-count {

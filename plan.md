@@ -1,19 +1,19 @@
 # Goal
 
-Make the home quick action area for recording vaccine, deworming, and food stock feel contained instead of visually overflowing the page.
+Replace the home quick record area with a compact pet record notebook that supports horizontal page-like browsing.
 
 # Approach
 
-Keep the existing three actions and navigation behavior. Change only the home page styles so the actions sit inside a stable paper container, with smaller internal buttons, clearer spacing, and no edge-to-edge segmented-card feel.
+Keep the existing vaccine, deworm, and food stock tap handlers. Replace only the current quick action markup and styles with a native Mini Program notebook component: paper container, binding rings, three overlapping note pages, page-curl details, light scroll/tap motion, and warm animal-island-ui colors.
 
 # Tasks
 
-- [x] Identify the home page quick action styles
-- [x] Add a contained outer action panel
-- [x] Reduce internal action-card height and visual weight
-- [x] Preserve three equal columns and existing tap handlers
-- [x] Validate style syntax and relevant references
+- [x] Review current home WXML, WXSS, JS, and page registration
+- [x] Replace the quick record WXML block
+- [x] Restyle the component as a compact notebook with binding rings
+- [x] Add lightweight horizontal scroll and page-flip visual states
+- [x] Validate JSON, JS syntax, and whitespace
 
 # Risks
 
-- Very narrow devices may still need a two-row layout later, but this pass keeps the current three-action layout stable and compact.
+- WeChat simulator visual verification is still required for exact spacing on the target device size.

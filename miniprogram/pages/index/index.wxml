@@ -49,19 +49,54 @@
       </view>
     </view>
 
-    <view class="quick-actions animate-fade-in-up animate-delay-2">
-      <button class="action-card vaccine-action" bindtap="onAddVaccine">
-        <image class="action-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
-        <text class="action-label">记疫苗</text>
-      </button>
-      <button class="action-card deworm-action" bindtap="onAddDeworm">
-        <image class="action-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
-        <text class="action-label">记驱虫</text>
-      </button>
-      <button class="action-card food-action" bindtap="onAddFoodStock">
-        <image class="action-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />
-        <text class="action-label">记存粮</text>
-      </button>
+    <view class="quick-record-book animate-fade-in-up animate-delay-2">
+      <view class="book-binding">
+        <view class="binding-ring"></view>
+        <view class="binding-ring"></view>
+        <view class="binding-ring"></view>
+        <view class="binding-ring"></view>
+      </view>
+      <view class="book-leaf leaf-one"></view>
+      <view class="book-leaf leaf-two"></view>
+
+      <view class="quick-record-header">
+        <view>
+          <view class="quick-record-title">宠物记录小本本</view>
+          <view class="quick-record-subtitle">记录TA的每一次守护</view>
+        </view>
+        <view class="book-sticker">PUP</view>
+      </view>
+
+      <scroll-view class="quick-record-scroll" scroll-x="{{true}}" enable-flex="{{true}}" show-scrollbar="{{false}}">
+        <view class="quick-record-pages">
+          <button class="quick-record-card vaccine-page" bindtap="onAddVaccine">
+            <view class="page-curl"></view>
+            <view class="record-icon-wrap">
+              <image class="record-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
+            </view>
+            <view class="record-card-title">记疫苗</view>
+            <view class="record-card-action">去记录</view>
+          </button>
+          <button class="quick-record-card deworm-page" bindtap="onAddDeworm">
+            <view class="page-curl"></view>
+            <view class="record-icon-wrap">
+              <image class="record-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
+            </view>
+            <view class="record-card-title">记驱虫</view>
+            <view class="record-card-action">去记录</view>
+          </button>
+          <button class="quick-record-card food-page" bindtap="onAddFoodStock">
+            <view class="page-curl"></view>
+            <view class="record-icon-wrap">
+              <image class="record-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />
+            </view>
+            <view class="record-card-title">记存粮</view>
+            <view class="record-card-action">去记录</view>
+          </button>
+        </view>
+      </scroll-view>
+
+      <view class="quick-record-hint">向左滑动，翻看下一页～</view>
     </view>
 
     <view class="section-title">

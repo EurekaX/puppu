@@ -280,40 +280,6 @@
   line-height: 1.3;
 }
 
-.quick-record-tabs {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4rpx;
-  min-height: 48rpx;
-  margin-top: 14rpx;
-  padding: 5rpx;
-  border: 2rpx solid rgba(168, 206, 151, 0.36);
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.34);
-  box-shadow: inset 0 2rpx 0 rgba(255, 255, 255, 0.60);
-}
-
-.quick-record-tab {
-  min-width: 0;
-  height: 38rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  color: rgba(111, 75, 42, 0.66);
-  font-size: 21rpx;
-  font-weight: 900;
-  transition: all 0.24s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.quick-record-tab.active {
-  background: var(--primary);
-  color: #FFFFFF;
-  box-shadow: 0 3rpx 0 #6faa6f;
-}
-
 .book-sticker {
   flex-shrink: 0;
   min-width: 62rpx;
@@ -334,8 +300,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 166rpx;
-  margin-top: 10rpx;
+  height: 176rpx;
+  margin-top: 14rpx;
   overflow: visible;
   border-radius: 28rpx;
 }
@@ -371,7 +337,7 @@
   top: 16rpx;
   right: 0;
   width: 42rpx;
-  height: 136rpx;
+  height: 146rpx;
   border-radius: 0 24rpx 28rpx 0;
   background: rgba(255, 249, 232, 0.86);
   box-shadow: 4rpx 5rpx 12rpx rgba(86, 63, 36, 0.08);

@@ -1,19 +1,19 @@
 # Goal
 
-Refine the home quick record notebook into a cleaner journal-tab layout with better text hierarchy.
+Remove the quick record journal tabs while keeping the cleaner notebook content layout.
 
 # Approach
 
-Keep the existing swiper and record navigation. Add three compact journal tabs above the page content, let tabs and swipes share `quickRecordIndex`, simplify the page body spacing, hide noisy helper text, and reduce decorative elements so the notebook feels more deliberate.
+Delete the vaccine, deworm, and food tab row, remove the now-unused tab tap handler, and rebalance the notebook body spacing so the header flows directly into the swiper page.
 
 # Tasks
 
 - [x] Review current quick record WXML, WXSS, JS, and page registration
-- [x] Add journal tabs for vaccine, deworm, and food pages
-- [x] Keep tab taps synchronized with the existing swiper index
-- [x] Simplify page body typography, spacing, and decorative density
+- [x] Remove the journal tab row from WXML
+- [x] Remove unused tab tap handler from JS
+- [x] Delete tab styles and rebalance swiper spacing
 - [x] Validate JSON, JS syntax, and whitespace
 
 # Risks
 
-- WeChat simulator visual verification is still required for exact swipe feel and spacing on the target device size.
+- WeChat simulator visual verification is still required for exact spacing on the target device size.

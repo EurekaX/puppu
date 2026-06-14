@@ -66,12 +66,6 @@
         </view>
       </view>
 
-      <view class="quick-record-tabs">
-        <view class="quick-record-tab {{quickRecordIndex == 0 ? 'active' : ''}}" data-index="0" bindtap="onTapQuickRecordTab">疫苗</view>
-        <view class="quick-record-tab {{quickRecordIndex == 1 ? 'active' : ''}}" data-index="1" bindtap="onTapQuickRecordTab">驱虫</view>
-        <view class="quick-record-tab {{quickRecordIndex == 2 ? 'active' : ''}}" data-index="2" bindtap="onTapQuickRecordTab">存粮</view>
-      </view>
-
       <swiper class="quick-record-swiper" current="{{quickRecordIndex}}" bindchange="onQuickRecordPageChange" circular="{{true}}" duration="{{360}}">
         <swiper-item>
           <view class="quick-record-page vaccine-page">

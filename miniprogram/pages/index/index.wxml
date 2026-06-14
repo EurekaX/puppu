@@ -69,8 +69,8 @@
 
       <swiper class="quick-record-swiper" current="{{quickRecordIndex}}" bindchange="onQuickRecordPageChange" circular="{{true}}" duration="{{360}}">
         <swiper-item>
-          <view class="quick-record-page">
-            <button class="quick-record-card vaccine-page" bindtap="onAddVaccine">
+          <view class="quick-record-page vaccine-page">
+            <button class="quick-record-card" bindtap="onAddVaccine">
               <view class="page-curl"></view>
               <view class="record-icon-wrap">
                 <image class="record-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
@@ -85,8 +85,8 @@
           </view>
         </swiper-item>
         <swiper-item>
-          <view class="quick-record-page">
-            <button class="quick-record-card deworm-page" bindtap="onAddDeworm">
+          <view class="quick-record-page deworm-page">
+            <button class="quick-record-card" bindtap="onAddDeworm">
               <view class="page-curl"></view>
               <view class="record-icon-wrap">
                 <image class="record-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
@@ -101,8 +101,8 @@
           </view>
         </swiper-item>
         <swiper-item>
-          <view class="quick-record-page">
-            <button class="quick-record-card food-page" bindtap="onAddFoodStock">
+          <view class="quick-record-page food-page">
+            <button class="quick-record-card" bindtap="onAddFoodStock">
               <view class="page-curl"></view>
               <view class="record-icon-wrap">
                 <image class="record-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />

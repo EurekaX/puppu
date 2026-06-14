@@ -1,17 +1,17 @@
 # Goal
 
-Remove the nested card look from the home quick record notebook so each swiper page feels like one continuous notebook page.
+Make each quick record page color fill the notebook body instead of appearing as a small centered color block.
 
 # Approach
 
-Keep the existing swiper and tap handlers. Move visual weight to the outer notebook and page surface, then make the record button a transparent content layer with no inner border, no independent card shadow, and only lightweight page-curl and tap feedback.
+Keep the existing swiper and tap handlers. Move the vaccine, deworm, and food page color classes from the inner button to the swiper page surface, make the page fill the available notebook body, and keep the button as a transparent full-page hit area.
 
 # Tasks
 
 - [x] Review current home WXML, WXSS, JS, and page registration
-- [x] Identify nested border/card styling in quick record page
-- [x] Remove inner card border, background, and heavy shadow
-- [x] Keep one-piece notebook page colors and page-curl detail
+- [x] Identify color block being applied to the inner button
+- [x] Move color page classes to the swiper page surface
+- [x] Expand the page surface to fill the notebook body
 - [x] Validate JSON, JS syntax, and whitespace
 
 # Risks

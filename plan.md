@@ -1,19 +1,19 @@
 # Goal
 
-Improve the home health status cards so borders and side rails remain legible on app-green cards.
+Make the home quick action area for recording vaccine, deworming, and food stock feel contained instead of visually overflowing the page.
 
 # Approach
 
-Keep the current app-green saved/safe state. Increase separation by adding a stronger card border, a visible inset side rail, more internal left padding, and a slightly larger grid gap. Avoid changing data or navigation behavior.
+Keep the existing three actions and navigation behavior. Change only the home page styles so the actions sit inside a stable paper container, with smaller internal buttons, clearer spacing, and no edge-to-edge segmented-card feel.
 
 # Tasks
 
-- [x] Identify low-contrast health card border and side rail styles
-- [x] Strengthen status card border and shadow
-- [x] Convert the side rail to an inset high-contrast rail
-- [x] Keep app-green safe cards with white text
-- [x] Run structure and syntax checks
+- [x] Identify the home page quick action styles
+- [x] Add a contained outer action panel
+- [x] Reduce internal action-card height and visual weight
+- [x] Preserve three equal columns and existing tap handlers
+- [x] Validate style syntax and relevant references
 
 # Risks
 
-- Full app-green cards are dense by nature; the fix improves contrast without returning to pale green cards.
+- Very narrow devices may still need a two-row layout later, but this pass keeps the current three-action layout stable and compact.

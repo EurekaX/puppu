@@ -67,34 +67,62 @@
         <view class="book-sticker">PUP</view>
       </view>
 
-      <scroll-view class="quick-record-scroll" scroll-x="{{true}}" enable-flex="{{true}}" show-scrollbar="{{false}}">
-        <view class="quick-record-pages">
-          <button class="quick-record-card vaccine-page" bindtap="onAddVaccine">
-            <view class="page-curl"></view>
-            <view class="record-icon-wrap">
-              <image class="record-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
-            </view>
-            <view class="record-card-title">记疫苗</view>
-            <view class="record-card-action">去记录</view>
-          </button>
-          <button class="quick-record-card deworm-page" bindtap="onAddDeworm">
-            <view class="page-curl"></view>
-            <view class="record-icon-wrap">
-              <image class="record-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
-            </view>
-            <view class="record-card-title">记驱虫</view>
-            <view class="record-card-action">去记录</view>
-          </button>
-          <button class="quick-record-card food-page" bindtap="onAddFoodStock">
-            <view class="page-curl"></view>
-            <view class="record-icon-wrap">
-              <image class="record-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />
-            </view>
-            <view class="record-card-title">记存粮</view>
-            <view class="record-card-action">去记录</view>
-          </button>
-        </view>
-      </scroll-view>
+      <swiper class="quick-record-swiper" current="{{quickRecordIndex}}" bindchange="onQuickRecordPageChange" circular="{{true}}" duration="{{360}}">
+        <swiper-item>
+          <view class="quick-record-page">
+            <button class="quick-record-card vaccine-page" bindtap="onAddVaccine">
+              <view class="page-curl"></view>
+              <view class="record-icon-wrap">
+                <image class="record-icon-img" src="/images/animal-icons/vaccine.png" mode="aspectFit" />
+              </view>
+              <view class="record-copy">
+                <view class="record-card-kicker">Vaccine</view>
+                <view class="record-card-title">记疫苗</view>
+                <view class="record-card-desc">把下一次守护日期记下来</view>
+              </view>
+              <view class="record-card-action">去记录</view>
+            </button>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class="quick-record-page">
+            <button class="quick-record-card deworm-page" bindtap="onAddDeworm">
+              <view class="page-curl"></view>
+              <view class="record-icon-wrap">
+                <image class="record-icon-img" src="/images/animal-icons/deworm.png" mode="aspectFit" />
+              </view>
+              <view class="record-copy">
+                <view class="record-card-kicker">Deworm</view>
+                <view class="record-card-title">记驱虫</view>
+                <view class="record-card-desc">定期护理，小肚肚更安心</view>
+              </view>
+              <view class="record-card-action">去记录</view>
+            </button>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class="quick-record-page">
+            <button class="quick-record-card food-page" bindtap="onAddFoodStock">
+              <view class="page-curl"></view>
+              <view class="record-icon-wrap">
+                <image class="record-icon-img" src="/images/animal-icons/food-bowl.png" mode="aspectFit" />
+              </view>
+              <view class="record-copy">
+                <view class="record-card-kicker">Food</view>
+                <view class="record-card-title">记存粮</view>
+                <view class="record-card-desc">看看家里的粮袋还够不够</view>
+              </view>
+              <view class="record-card-action">去记录</view>
+            </button>
+          </view>
+        </swiper-item>
+      </swiper>
+
+      <view class="quick-record-dots">
+        <view class="quick-record-dot {{quickRecordIndex == 0 ? 'active' : ''}}"></view>
+        <view class="quick-record-dot {{quickRecordIndex == 1 ? 'active' : ''}}"></view>
+        <view class="quick-record-dot {{quickRecordIndex == 2 ? 'active' : ''}}"></view>
+      </view>
 
       <view class="quick-record-hint">向左滑动，翻看下一页～</view>
     </view>

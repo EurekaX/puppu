@@ -12,6 +12,7 @@ Page({
     dewormStatusLabel: '暂无记录',
     foodStockStatus: 'none',
     foodStockStatusLabel: '暂无存粮记录',
+    quickRecordIndex: 0,
     reminders: []
   },
 
@@ -99,6 +100,12 @@ Page({
       return;
     }
     wx.navigateTo({ url: '/pages/food-stock-form/food-stock-form?dogId=' + this.data.currentDog._id });
+  },
+
+  onQuickRecordPageChange(e) {
+    this.setData({
+      quickRecordIndex: e.detail.current
+    });
   },
 
   onTapReminder(e) {

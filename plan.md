@@ -1,17 +1,17 @@
 # Goal
 
-Remove the quick record journal tabs while keeping the cleaner notebook content layout.
+Make the quick record notebook page content evenly distributed and cleaner.
 
 # Approach
 
-Delete the vaccine, deworm, and food tab row, remove the now-unused tab tap handler, and rebalance the notebook body spacing so the header flows directly into the swiper page.
+Keep the existing swiper and navigation. Replace the text action with a compact plus control, remove the inner page border, and lay out icon, copy, and action as three evenly spaced notebook elements.
 
 # Tasks
 
 - [x] Review current quick record WXML, WXSS, JS, and page registration
-- [x] Remove the journal tab row from WXML
-- [x] Remove unused tab tap handler from JS
-- [x] Delete tab styles and rebalance swiper spacing
+- [x] Replace "去记录" with plus controls
+- [x] Remove the inner page border
+- [x] Rebuild the page body as a three-column equal layout
 - [x] Validate JSON, JS syntax, and whitespace
 
 # Risks

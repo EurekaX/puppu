@@ -79,7 +79,7 @@
                 <view class="record-card-title">记疫苗</view>
                 <view class="record-card-desc">把下一次守护日期记下来</view>
               </view>
-              <view class="record-card-action">去记录</view>
+              <view class="record-card-action">+</view>
             </button>
           </view>
         </swiper-item>
@@ -95,7 +95,7 @@
                 <view class="record-card-title">记驱虫</view>
                 <view class="record-card-desc">定期护理，小肚肚更安心</view>
               </view>
-              <view class="record-card-action">去记录</view>
+              <view class="record-card-action">+</view>
             </button>
           </view>
         </swiper-item>
@@ -111,7 +111,7 @@
                 <view class="record-card-title">记存粮</view>
                 <view class="record-card-desc">看看家里的粮袋还够不够</view>
               </view>
-              <view class="record-card-action">去记录</view>
+              <view class="record-card-action">+</view>
             </button>
           </view>
         </swiper-item>

@@ -314,7 +314,7 @@
   height: 100%;
   padding: 0;
   border-radius: 28rpx;
-  border: 2rpx solid rgba(168, 206, 151, 0.30);
+  border: 0;
   background:
     linear-gradient(90deg, rgba(168, 206, 151, 0.18) 0 2rpx, transparent 2rpx),
     repeating-linear-gradient(180deg, transparent 0 38rpx, rgba(216, 198, 166, 0.22) 39rpx, transparent 40rpx),
@@ -360,10 +360,12 @@
   z-index: 2;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
-  justify-content: flex-start;
-  padding: 18rpx 22rpx 18rpx 30rpx;
+  justify-items: center;
+  column-gap: 14rpx;
+  padding: 18rpx 28rpx 18rpx 34rpx;
   border: 0;
   border-radius: 26rpx;
   background: transparent;
@@ -436,7 +438,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 24rpx;
-  border: 2rpx solid rgba(216, 198, 166, 0.48);
+  border: 0;
   background: rgba(255, 255, 255, 0.54);
   box-shadow:
     inset 0 2rpx 0 rgba(255, 255, 255, 0.72),
@@ -453,8 +455,9 @@
   position: relative;
   z-index: 1;
   min-width: 0;
-  flex: 1;
-  margin-left: 18rpx;
+  width: 100%;
+  margin-left: 0;
+  text-align: center;
 }
 
 .record-card-kicker {
@@ -471,9 +474,12 @@
   z-index: 1;
   margin-top: 0;
   color: var(--text);
-  font-size: 32rpx;
+  font-size: 31rpx;
   font-weight: 900;
   line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .record-card-desc {
@@ -490,20 +496,21 @@
 .record-card-action {
   position: relative;
   z-index: 1;
-  width: 94rpx;
-  height: 42rpx;
+  width: 52rpx;
+  height: 52rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 12rpx;
+  margin-left: 0;
   border-radius: var(--radius-full);
-  border: 2rpx solid rgba(216, 198, 166, 0.42);
-  background: rgba(255, 255, 255, 0.58);
-  color: #7A5A32;
-  font-size: 20rpx;
+  border: 0;
+  background: var(--primary);
+  color: #FFFFFF;
+  font-size: 38rpx;
   font-weight: 900;
   flex-shrink: 0;
-  box-shadow: 0 2rpx 0 rgba(216, 198, 166, 0.48);
+  line-height: 1;
+  box-shadow: 0 4rpx 0 #6faa6f, 0 8rpx 14rpx rgba(86, 63, 36, 0.10);
 }
 
 .quick-record-dots {
